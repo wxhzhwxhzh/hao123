@@ -1,24 +1,29 @@
 @media screen and (max-width:768px) {
+	/* 定义媒体查询，针对屏幕宽度小于等于768px的情况 */
+
 	*{
 		margin:0;padding: 0;
 	}
+	/* 重置所有元素的外边距和内边距为0 */
 
 	html,body{
 		height: 100%;
 		width: 100%;
 	}
-	/*å†…å®¹æ ·å¼ï¼Œä½¿ç”¨flexå¸ƒå±€*/
+	/* 设置html和body元素的高度和宽度为100% */
+
 	.content{
 		width: 15rem;
 		display: flex;
-  		flex-direction: column;
- 		justify-content: space-around;
-  		align-items: center;
-  		/*height: 46rem;*/
-  		position: absolute;
-  		top:26%;
-}
-	/*æœç´¢æ¡†æ€»ä½“æ ·å¼*/
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		/*height: 46rem;*/
+		position: absolute;
+		top:26%;
+	}
+	/* 设置类名为content的元素的宽度为15rem，并使用flex布局使其子元素在垂直方向上平均分布，水平居中对齐。并设置其相对于父元素绝对定位，距离顶部的距离为26% */
+
 	.baidu{
 		position: relative;
 		width: 14rem;
@@ -26,28 +31,32 @@
 		left: 50%;
 		transform: translateX(-50%);
 	}
+	/* 设置类名为baidu的元素相对于其父元素进行定位，宽度为14rem，高度为2.6rem。通过left和transform属性将其水平居中对齐 */
 
 	.baidu-2{
 		height: 2.6rem;
 	}
+	/* 设置类名为baidu-2的元素的高度为2.6rem */
 
-/*å–æ¶ˆå¤šçº§æœç´¢ï¼Œåªä¿ç•™ç™¾åº¦*/
 	#Select-2{
 		position: absolute;
 		left: 0;
 	}
+	/* 设置id为Select-2的元素相对于其父元素绝对定位，并将其左边距设置为0 */
 
 	.Select-box-2{
 		display: none;
 		float: none;
 	}
+	/* 设置类名为Select-box-2的元素不显示，并取消其浮动效果 */
 
 	.Select-box-2  li{
 		background-color: yellow;
 		display: none;
 		float: none;
 	}
-	/*è¾“å…¥æ¡†æ ·å¼*/
+	/* 设置类名为Select-box-2的元素内的li元素的背景颜色为黄色，并使其不显示，并取消其浮动效果 */
+
 	#kw-2{
 		width: 10rem;
 		height: 1.2rem;
@@ -55,7 +64,8 @@
 		position: absolute;
 		padding-left: 10px;
 	}
-	/*æœç´¢æ¡†æ ·å¼*/
+	/* 设置id为kw-2的元素的宽度为10rem，高度为1.2rem，取消边框，并相对于其父元素绝对定位，左内边距为10px */
+
 	#su-2 {
 	    width: 3rem;
 	    text-align: center;
@@ -67,28 +77,34 @@
 	    border-radius: 0;
 	    height: 1.2rem;
 	}
+	/* 设置id为su-2的元素的宽度为3rem，文本水平居中对齐，行高为0rem，相对于其父元素绝对定位，背景颜色为蓝色，边框颜色为蓝色，右边距为1rem，边框圆角为0，高度为1.2rem */
+
 	#su-2:hover{
 		background-color: blue;
 	}
+	/* 当鼠标悬停在id为su-2的元素上时，设置其背景颜色为蓝色 */
 
 	#su-2:avtive{
 		background-color: blue;
 		box-shadow: none;	
 	}
-	
-	/*contentä¸‹çš„æ‰€æœ‰divå®½åº¦*/
+	/* 当id为su-2的元素处于激活状态时，设置其背景颜色为蓝色，并取消阴影效果 */
+
 	.content div{
 		width: 100%;
 	}
-	/*æ¯ä¸ªé€‰æ‹©æ¡†çš„å®½åº¦*/
+	/* 设置类名为content的元素内的div元素的宽度为100% */
+
 	.content li{
 		width: 4.69rem;
 	}
-	/*æ”¾å¼ƒcontentå¤–çš„footer*/
+	/* 设置类名为content的元素内的li元素的宽度为4.69rem */
+
 	.footer{  
 		display: none;
 	}
-	/*ç§»åŠ¨ç«¯ä½¿ç”¨çš„footer*/
+	/* 设置类名为footer的元素不显示 */
+
 	.footer1{
 		display: block;
 		text-align: center;
@@ -97,13 +113,15 @@
 		bottom: 0;
 		color:white;
 	}
+	/* 设置类名为footer1的元素显示为块级元素，文本居中对齐，相对于其父元素相对定位，上内边距为10px，底部距离为0，文本颜色为白色 */
 
 	input[type="button"], input[type="submit"], input[type="reset"] {
-
-	-webkit-appearance: none;
-
+		-webkit-appearance: none;
 	}
+	/* 取消input元素的默认外观样式 */
 
-	textarea {  -webkit-appearance: none;}  
-	
+	textarea {  
+		-webkit-appearance: none;
+	} 
+	/* 取消textarea元素的默认外观样式 */	
 }
