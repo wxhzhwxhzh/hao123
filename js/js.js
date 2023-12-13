@@ -138,8 +138,8 @@ $('.Select-box-2 li').click(function () {
 		_tihs = 'https://www.bing.com/search';
 		_name = 'q';
 	} else if (_tihs == 'miji_s') {
-		_tihs = 'https://www.dogedoge.com/results';
-		_name = 'q';
+		_tihs = 'https://www.yandex.com/search';
+		_name = 'text';
 	} else {
 		_tihs = 'https://www.baidu.com/s';
 		_name = 'wd';
