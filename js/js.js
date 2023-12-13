@@ -132,7 +132,7 @@ $('.Select-box-2 li').click(function () {
 		_tihs = 'https://www.baidu.com/s';
 		_name = 'wd';
 	} else if (_tihs == 'google_s') {
-		_tihs = 'https://www.google.com/search';
+		_tihs = 'https://www.google.com.hk/search';
 		_name = 'q';
 	} else if (_tihs == 'bing_s') {
 		_tihs = 'https://www.bing.com/search';
