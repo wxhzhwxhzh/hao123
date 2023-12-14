@@ -61,8 +61,8 @@
 				<ul>
 					<li class="this_s">百 度</li>
 					<li class="miji_s">Yandex</li>
-					<li class="bing_s"><img width="30" height="30" src="ico/bing.ico">必 应</li>
-					<li class="google_s"><img width="30" height="30" src="ico/google.ico">谷 歌</li>
+					<li class="bing_s"><img class="ico" src="ico/bing.ico">必 应</li>
+					<li class="google_s"><img class="ico" src="ico/google.ico">谷 歌</li>
 					<li class="baidu_s">百 度</li>
 					<li class="ff_s">F 搜</li>
 				</ul>
@@ -231,6 +231,17 @@
 			// 设置rel属性为"nofollow"
 			link.setAttribute('rel', 'nofollow');
 		}
+		var icoElements = document.querySelectorAll('img.ico');
+
+		// 遍历所有选中的<img>标签  设置高与宽
+		var size='25px'
+		for (var i = 0; i < icoElements.length; i++) {
+			var link = icoElements[i];
+			
+			link.setAttribute('height', size);
+			
+			link.setAttribute('width', size);
+		}
 
 		// 获取所有id为"vip"的<a>标签
 		var vipElements = document.querySelectorAll('a#vip');
@@ -239,7 +250,7 @@
 		for (var i = 0; i < vipElements.length; i++) {
 			var link = vipElements[i];
 			// 设置文本颜色为红色
-			link.style.color = 'blue';
+			link.style.color = 'pink';
 		}
 
 
