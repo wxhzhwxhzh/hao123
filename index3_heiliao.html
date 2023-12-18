@@ -5,7 +5,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
     <title>WangXianSheng视频站</title>
 
     <!-- 装饰栏 开始 -->
@@ -77,8 +77,8 @@
         <!-- <div> <img src="img/screenshot.webp">
 
         </div> -->
-        <p style="color: red;">点击下面按钮刷新下一个视频</p>
-        <button id="randomButton" style="min-width: 100px;"  onclick="updateRandomUrl()">刷新</button>
+        <p  class="turn_to_red">点击下面按钮刷新下一个视频</p>
+        <button id="randomButton"   onclick="updateRandomUrl()">刷新</button>
 
         <br/>
         <br/>
@@ -95,6 +95,16 @@
 
     <!-- 脚本栏start -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.27.1/DPlayer.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   
+
+    <script>
+        // jQuery的链式调用 操作css
+        $('.turn_to_red').css('color', 'pink');
+        $('#randomButton').css('min-width','150px').css('background-color','green') ;
+
+    </script>
 
     <script>
         var raw_url="https://heiliao385.pro/archives/2191.html";
