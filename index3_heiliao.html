@@ -102,13 +102,14 @@
 
     <script>
         // jQuery的链式调用 操作css
-        $('.turn_to_red').css('color', 'pink');
-        $('#randomButton').css('min-width','150px').css('background-color','green') ;
+        $('.turn_to_red').css('color', 'blue');
+        $('#randomButton').css('min-width','150px').css('background-color','green');
 
     </script>
 
     <script>
-        var raw_url="https://heiliao385.pro/archives/2191.html";
+        //引入Dplayer
+        
 
         const dp = new DPlayer({
             container: document.getElementById('dplayer'),
@@ -133,6 +134,8 @@
 
     <script>
         // 更新随机URL
+        var raw_url="https://heiliao385.pro/archives/2191.html";
+        
         function updateRandomUrl() {
             // 生成随机数字
             var num = generateRandomNumber();
@@ -154,13 +157,17 @@
             // ];
             
             // 更新按钮文本为m3u8_url
-            var button = document.getElementById('randomButton');
-            button.innerText = m3u8_url;
+
+            $('#randomButton').text(m3u8_url);
 
             // 插入图片
             insertImages(pic_urls);
-            document.getElementById("raw_url").setAttribute("href",new_raw_url);
-            document.getElementById("raw_url").innerText=new_raw_url;
+
+            // document.getElementById("raw_url").setAttribute("href",new_raw_url);
+            // document.getElementById("raw_url").innerText=new_raw_url;
+            //更新链接文本
+            $('#raw_url').attr('href',new_raw_url);
+            $('#raw_url').text(new_raw_url);
 
             // 暂停视频播放，并切换视频源和封面图
             dp.pause();
@@ -178,15 +185,12 @@
 
         // 插入图片
         function insertImages(urls) {
-            var div = document.getElementById("pics");
-            div.innerHTML = "";
+            var div =$('#pics');     // document.getElementById("pics");
+            div.empty(); //清空div
 
             urls.forEach(function(url) {
-                var img = document.createElement("img");
-                img.src = url;
-                img.className="pics_content"
-                                
-                div.appendChild(img);
+                var img = $('<img>').addClass('pics_content').attr('src',url);    //创建新的img标签 并赋值                            
+                div.append(img);
             });
         }
     </script>
