@@ -5,7 +5,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <title>WangXianSheng视频站</title>
 
     <!-- 装饰栏 开始 -->
@@ -140,11 +141,17 @@
             var m3u8_url = `https://www.bi1ibili.com/m3u8/${num[0]}/${num}/index.m3u8`;
             var new_raw_url = raw_url.replace("2191",num);
 
-            var pic_urls = [
-                `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-1.jpg`,
-                `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-2.jpg`,
-                `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-3.jpg`,
-            ];
+            //由一个数组生成另一个数组
+            const array = [1, 2, 3,4,5];
+            var pic_urls=array.map(function(x){
+                  return `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-${x}.jpg`;
+            });
+
+            // var pic_urls = [
+            //     `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-1.jpg`,
+            //     `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-2.jpg`,
+            //     `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-3.jpg`,
+            // ];
             
             // 更新按钮文本为m3u8_url
             var button = document.getElementById('randomButton');
