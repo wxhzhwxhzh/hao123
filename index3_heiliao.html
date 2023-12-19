@@ -102,11 +102,11 @@
 
     <script>
         //jQuery  自定义函数插件
-        $.fn.backgroud= function (c) {           
-            this.css('backgroundColor',c);
+        $.fn.backgroud = function (c) {
+            this.css('backgroundColor', c);
             return this;
         }
-        
+
         // jQuery的链式调用 操作css  
         $('.turn_to_red').css('color', 'blue');
         $('#randomButton').css('min-width', '150px').backgroud('lightgreen');
@@ -167,10 +167,8 @@
 
             //由一个数组生成另一个数组  获取图片url的批量地址
             const array = [1, 2, 3, 4, 5];
-            var pic_urls = array.map(function (x) {
-                return `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-${x}.jpg`;
-            });
-
+            //map  高阶函数    箭头函数   模版字符串
+            var pic_urls = array.map(x => `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-${x}.jpg`);
 
 
 
