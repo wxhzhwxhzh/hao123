@@ -6,7 +6,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
     <title>WangXianSheng视频站</title>
 
     <!-- 装饰栏 开始 -->
@@ -39,11 +39,9 @@
             /* 设置按钮的高度为50像素 */
         }
 
-        .pics_content
-        {
-           width: 75%;
+        .pics_content {
+            width: 75%;
         }
-
     </style>
 
     <!-- 装饰栏  结束 -->
@@ -61,55 +59,74 @@
 
 <body>
 
+    <!-- 页面主体 start -->
     <div class="juzhong">
 
         <h1>WangXianSheng视频站</h1>
 
-        <!-- <img id="pic" src="img/logo.ico">
-        <img id="pic2" src="img/logo.ico"> -->
 
-
-        <div id="pics">  </div>
+        <div id="pics"> </div>
 
 
 
-        
+
         <div id="dplayer"></div>
-        <!-- <div> <img src="img/screenshot.webp">
 
-        </div> -->
-        <p  class="turn_to_red">点击下面按钮刷新下一个视频</p>
-        <button id="randomButton"   onclick="updateRandomUrl()">刷新</button>
+        <p class="turn_to_red">点击下面按钮刷新下一个视频</p>
+        <button id="randomButton" onclick="updateRandomUrl()">刷新</button>
 
-        <br/>
-        <br/>
-
-        <a id="raw_url" href='https://www.bi1ibili.com/m3u8/3/3025/index.m3u8'  target="_blank">访问原始网页</a>
+        <br />
+        <br />
+        <button id="getText">刷新版权所有</button>
+        <br />
+        <a id="raw_url" href='https://www.bi1ibili.com/m3u8/3/3025/index.m3u8' target="_blank">访问原始网页</a>
+        <br />
 
         <div id="info">版权所有</div>
 
 
-
-
-
     </div>
+    <!-- 页面主体 end -->
+
+
+
 
     <!-- 脚本栏start -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.27.1/DPlayer.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.27.1/DPlayer.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 引入jQuery -->
+
 
     <script>
         // jQuery的链式调用 操作css
         $('.turn_to_red').css('color', 'blue');
-        $('#randomButton').css('min-width','150px').css('background-color','green');
+        $('#randomButton').css('min-width', '150px').css('background-color', 'lightgreen');
+        $('#getText').css('min-width', '150px').css('background-color', 'lightblue').css('height', '50px');
+
+        //Ajax  异步读取url.txt
+        $('#getText').click(function () {
+            $.ajax({
+                url: 'url.txt',
+                method: 'GET',
+                dataType: 'text',
+                success: function (response) {
+                    $('#info').text(response);
+                }, error: function () {
+                    console.log('请求失败');
+                    alert('请求失败');
+                }
+            });
+        });
+
 
     </script>
 
     <script>
         //引入Dplayer
-        
+        var raw_url = "https://heiliao385.pro/archives/2191.html";
 
         const dp = new DPlayer({
             container: document.getElementById('dplayer'),
@@ -134,39 +151,36 @@
 
     <script>
         // 更新随机URL
-        var raw_url="https://heiliao385.pro/archives/2191.html";
-        
         function updateRandomUrl() {
             // 生成随机数字
             var num = generateRandomNumber();
-            
+
             // 构建m3u8_url和pic_urls
             var m3u8_url = `https://www.bi1ibili.com/m3u8/${num[0]}/${num}/index.m3u8`;
-            var new_raw_url = raw_url.replace("2191",num);
+            var new_raw_url = raw_url.replace("2191", num);
 
-            //由一个数组生成另一个数组
-            const array = [1, 2, 3,4,5];
-            var pic_urls=array.map(function(x){
-                  return `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-${x}.jpg`;
+            //由一个数组生成另一个数组  获取图片url的批量地址
+            const array = [1, 2, 3, 4, 5];
+            var pic_urls = array.map(function (x) {
+                return `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-${x}.jpg`;
             });
 
-            // var pic_urls = [
-            //     `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-1.jpg`,
-            //     `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-2.jpg`,
-            //     `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-3.jpg`,
-            // ];
-            
-            // 更新按钮文本为m3u8_url
 
-            $('#randomButton').text(m3u8_url);
+
 
             // 插入图片
             insertImages(pic_urls);
 
-            // document.getElementById("raw_url").setAttribute("href",new_raw_url);
-            // document.getElementById("raw_url").innerText=new_raw_url;
+            // 更新按钮文本为m3u8_url  界面元素先隐藏后渐变！
+            $('#dplayer').hide().show(1000);
+            $('#randomButton').text('刷新 '+m3u8_url).hide().show(2000);
+            $('.pics_content').show(2000);
+
+
+
+
             //更新链接文本
-            $('#raw_url').attr('href',new_raw_url);
+            $('#raw_url').attr('href', new_raw_url);
             $('#raw_url').text(new_raw_url);
 
             // 暂停视频播放，并切换视频源和封面图
@@ -175,22 +189,25 @@
                 url: m3u8_url,
                 pic: './img/01.jpg'
             });
+
+            
         }
 
         // 生成随机数字
         function generateRandomNumber() {
-            var randomNumber = Math.floor(Math.random() * (3500 - 2000 + 1)) + 2000;
+            var randomNumber = Math.floor(Math.random() * (3400 - 1500 + 1)) + 1500;
             return randomNumber.toString();
         }
 
         // 插入图片
         function insertImages(urls) {
-            var div =$('#pics');     // document.getElementById("pics");
+            var div = $('#pics');     // document.getElementById("pics");
             div.empty(); //清空div
 
-            urls.forEach(function(url) {
-                var img = $('<img>').addClass('pics_content').attr('src',url);    //创建新的img标签 并赋值                            
+            urls.forEach(function (url) {
+                var img = $('<img>').addClass('pics_content').attr('src', url).hide();    //创建新的img标签 并赋值 隐藏                         
                 div.append(img);
+
             });
         }
     </script>
