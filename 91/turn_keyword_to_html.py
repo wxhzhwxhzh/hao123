@@ -105,7 +105,8 @@ def main():
     page.get(URL2)
 
 
-    pic_info_s = page.eles("tag:div@@class=module-item-pic")
+    # pic_info_s = page.eles("tag:div@@class=module-item-pic")
+    pic_info_s = page.eles("xpath://div[@class='module-item-pic']")
 
 
     links = [
