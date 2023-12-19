@@ -101,10 +101,16 @@
 
 
     <script>
-        // jQuery的链式调用 操作css
+        //jQuery  自定义函数插件
+        $.fn.backgroud= function (c) {           
+            this.css('backgroundColor',c);
+            return this;
+        }
+        
+        // jQuery的链式调用 操作css  
         $('.turn_to_red').css('color', 'blue');
-        $('#randomButton').css('min-width', '150px').css('background-color', 'lightgreen');
-        $('#getText').css('min-width', '150px').css('background-color', 'lightblue').css('height', '50px');
+        $('#randomButton').css('min-width', '150px').backgroud('lightgreen');
+        $('#getText').css('min-width', '150px').css('height', '50px').backgroud('chocolate');
 
         //Ajax  异步读取url.txt
         $('#getText').click(function () {
@@ -173,7 +179,7 @@
 
             // 更新按钮文本为m3u8_url  界面元素先隐藏后渐变！
             $('#dplayer').hide().show(1000);
-            $('#randomButton').text('刷新 '+m3u8_url).hide().show(2000);
+            $('#randomButton').text('刷新 ' + m3u8_url).hide().show(2000);
             $('.pics_content').show(2000);
 
 
@@ -190,7 +196,7 @@
                 pic: './img/01.jpg'
             });
 
-            
+
         }
 
         // 生成随机数字
