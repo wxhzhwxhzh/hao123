@@ -44,8 +44,6 @@
             background-color: chocolate;
 
         }
-
-
     </style>
 
     <!-- 装饰栏  结束 -->
@@ -173,7 +171,7 @@
             var new_raw_url = raw_url.replace("2191", num);
 
             //由一个数组生成另一个数组  获取图片url的批量地址
-            const array = [1, 2, 3, 4, 5];
+            const array = [1, 2, 3, 4, 5,6];
             //map  高阶函数    箭头函数   模版字符串
             var pic_urls = array.map(x => `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-${x}.jpg`);
 
@@ -200,12 +198,12 @@
                 pic: './img/01.jpg'
             });
 
-            
-           
+
+
 
             // 插入图片
             insertImages(pic_urls);
-            
+
 
 
 
@@ -222,18 +220,35 @@
             var div = $('#pics');     // document.getElementById("pics");
             div.empty(); //清空div
 
-            urls.forEach(function (url) {
-                var img = $('<img>').addClass('pics_content').attr('src', url).css('width', '80%').hide().show(2000);    //创建新的img标签 并赋值 隐藏                         
-                div.append(img);
+            urls.forEach((url) => {
+                let img = $('<img>').addClass('pics_content').attr('src', url).css('width', '80%').hide().show(2000);    //创建新的img标签 并赋值 隐藏
+                let p_txt=$('<a>').text(url);   //创建新的a标签 并赋值
+                
+                checkImageURL(url, (isValid) => { if (isValid) { div.append(img) } else {div.append(p_txt)} });  //图片url有效就添加图片标签    无效就添加文本标签
+            }
 
-            });
-            
+
+            );
+
+        }
+
+        //Ajax 检测图片url是否有效
+        function checkImageURL(url, callback) {
+            let img = new Image();
+            img.onload = function () {
+                callback(true);
+            };
+            img.onerror = function () {
+                callback(false);
+                
+            };
+            img.src = url;
         }
 
 
     </script>
 
-   
+
 
 
 
