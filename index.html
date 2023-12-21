@@ -88,10 +88,10 @@
 						<li><a href="https://vip.yeyulingfeng.com/jiekou.html?ver=20230512" class="link-3" id="vip">VIP解析</a></li>
 						<li><a href="https://wandou.la/" class="link-3" >豌豆影视</a></li>
 						<li><a href="https://ppxzy.net/" class="link-3" >皮皮虾</a></li>
-						<li><a href="https://dianyi.ng/" class="link-3" >  <img src="ico/dianying.png"> 电影先生</a></li>
+						<li><a href="https://dianyi.ng/" class="link-3" >  电影先生</a></li>
 						<li><a href="https://52gen.top/" class="link-3" >我爱跟剧</a></li>					
 						<li><a href="https://dianyi.ng/top.html" class="link-3" >热播排行榜</a></li>			
-						<li><a href="https://www.douyin.com/" class="link-3" >  <img src="ico/douyin.ico"> 抖音</a></li>
+						<li><a href="https://www.douyin.com/" class="link-3" >   抖音</a></li>
 						<li><a href="https://heiliao391.pro/" class="link-3" >黑料不打烊</a></li>
 						<li><a href="http://www.tvyan.com/" class="link-3" >电视直播</a></li>
 					</ul>
@@ -206,6 +206,36 @@
 	
 	<script type="text/javascript" src="js/js.js"></script>
 	<script type="text/javascript" src="js/js2.js"></script>
+	<script>
+		//提取网站的favicon
+		$(document).ready(function () {
+
+			$("a.link-3").each(
+				function () {
+					let raw_link = $(this).attr('href');					
+
+					if (raw_link.includes("http")) {
+						let link = extractDomainWithHttp(raw_link);
+						let ico_url = link + '/favicon.ico';
+
+
+						$(this).prepend($(`<img src="${ico_url}" class="ico">`));  //创建img标签 并添加到文本前
+
+						$(this).attr('style', ' font-style: italic; display: flex;  align-items: center; justify-content: center;'); //所有元素水平垂直都对齐
+					}
+				}
+			);
+
+
+			$('.ico').height('18px').width('18px');
+		});
+
+		function extractDomainWithHttp(url) {
+			var domain = url.match(/^(https?:\/\/[^\/]+)/i);
+			return domain && domain[1];
+		}
+
+	</script>
 	
 
 	<!-- 脚本栏end -->
