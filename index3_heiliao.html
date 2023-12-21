@@ -221,7 +221,7 @@
             div.empty(); //清空div
 
             urls.forEach((url) => {
-                let img = $('<img>').addClass('pics_content').attr('src', url).css('width', '80%').hide().show(2000);    //创建新的img标签 并赋值 隐藏
+                let img = $('<img>').addClass('pics_content').attr('src', url).css('width', '80%');    //创建新的img标签 并赋值 隐藏
                 let p_txt=$('<a>').text(url);   //创建新的a标签 并赋值
                 
                 checkImageURL(url, (isValid) => { if (isValid) { div.append(img) } else {div.append(p_txt)} });  //图片url有效就添加图片标签    无效就添加文本标签
