@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>WangXianSheng视频站</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
     <!-- 装饰栏 开始 -->
     <style>
@@ -15,8 +16,6 @@
 
             background-color: #f3f3f5;
             text-align: center;
-
-
 
         }
 
@@ -58,22 +57,15 @@
 
 
 
-
 <body>
 
     <!-- 页面主体 start -->
     <div class="juzhong">
 
-        <h1>WangXianSheng视频站</h1>
-
-
-        <div id="pics"> </div>
-        <br />
-        <br />
-        <button class="pp" onclick="prevSlide()">上一张</button>
-        <button class="pp" onclick="nextSlide()">下一张</button>
-        <br />
-        <br />
+        <h2  class="ui-widget-header" >WangXianSheng视频站</h2>  
+             
+        
+        
         <p class="turn_to_red">点击下面按钮刷新下一个视频</p>
         <button id="randomButton" onclick="updateRandomUrl()">刷新</button>
         <br />
@@ -87,6 +79,8 @@
         <br />
 
         <div id="info">版权所有</div>
+        <div id="pics"> </div>
+        <br />
 
 
     </div>
@@ -181,7 +175,7 @@
 
             // 更新按钮文本为m3u8_url  界面元素先隐藏后渐变！
             $('#dplayer').hide().show(1000);
-            $('#randomButton').text('刷新 ' + m3u8_url).hide().show(2000);
+            $('#randomButton').text('点我刷新 ' + m3u8_url).hide().show(2000);
             $('.pics_content').show(2000);
 
 
