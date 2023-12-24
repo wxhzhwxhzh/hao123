@@ -32,15 +32,33 @@
         }
 
         #randomButton {
-            height: 50px;
-            background-color: chocolate;
-            border-radius: 8px;
+            /* height: 50px; */
+            background-color: rgb(223, 135, 20);
+            border-radius: 10px 0 0 10px;
             /* 设置按钮的高度为50像素 */
+
+
         }
+
+        #randomButton:hover {
+            background-color: #f00;
+            /* 当鼠标悬停时，按钮的背景颜色变为红色 */
+        }
+
+
+
 
         .pp {
             height: 50px;
             background-color: chocolate;
+
+        }
+
+        #ice {
+            position: fixed;  
+            /* 固定位置在右边中心 */
+            bottom: 50%;
+            right: 0%;
 
         }
     </style>
@@ -62,21 +80,22 @@
     <!-- 页面主体 start -->
     <div class="juzhong">
 
-        <h2  class="ui-widget-header" >WangXianSheng视频站</h2>  
-             
+        <h2 class="ui-widget-header">WangXianSheng<br>视频站</h2>
+
+        <div id="ice">
+            <button id="randomButton" onclick="updateRandomUrl()">点<br>我<br>刷<br>新</button>
+        </div>
         
-        
-        <p class="turn_to_red">点击下面按钮刷新下一个视频</p>
-        <button id="randomButton" onclick="updateRandomUrl()">刷新</button>
+        <br />
+        <a id="raw_url" class="ui-widget-header  turn_to_red" href='https://www.bi1ibili.com/m3u8/3/3025/index.m3u8'
+            target="_blank">访问原始网页</a>
+        <br />
         <br />
         <br />
         <div id="dplayer"></div>
         <br />
         <br />
         <button id="getText">刷新版权所有</button>
-        <br />
-        <a id="raw_url" href='https://www.bi1ibili.com/m3u8/3/3025/index.m3u8' target="_blank">访问原始网页</a>
-        <br />
 
         <div id="info">版权所有</div>
         <div id="pics"> </div>
@@ -107,7 +126,7 @@
 
         // jQuery的链式调用 操作css  
         $('.turn_to_red').css('color', 'blue');
-        $('#randomButton').css('min-width', '150px').backgroud('lightgreen');
+
         $('#getText').css('min-width', '150px').css('height', '50px').backgroud('chocolate');
 
         //Ajax  异步读取url.txt
@@ -165,7 +184,7 @@
             var new_raw_url = raw_url.replace("2191", num);
 
             //由一个数组生成另一个数组  获取图片url的批量地址
-            const array = [1, 2, 3, 4, 5,6];
+            const array = [1, 2, 3, 4, 5, 6, 7, 8];
             //map  高阶函数    箭头函数   模版字符串
             var pic_urls = array.map(x => `https://heiliao391.pro/files/image/${num[0]}/${num}/${num}-${x}.jpg`);
 
@@ -175,7 +194,7 @@
 
             // 更新按钮文本为m3u8_url  界面元素先隐藏后渐变！
             $('#dplayer').hide().show(1000);
-            $('#randomButton').text('点我刷新 ' + m3u8_url).hide().show(2000);
+            $('#randomButton').hide().show(2000);
             $('.pics_content').show(2000);
 
 
@@ -198,6 +217,12 @@
             // 插入图片
             insertImages(pic_urls);
 
+            // 添加 CSS 样式，使用 flexbox 进行一竖列布局    并且垂直居中对齐
+            $('#pics').css('display', 'flex');
+            $('#pics').css('flex-direction', 'column').css('align-items', 'center');
+
+
+
 
 
 
@@ -216,9 +241,9 @@
 
             urls.forEach((url) => {
                 let img = $('<img>').addClass('pics_content').attr('src', url).css('width', '80%');    //创建新的img标签 并赋值 隐藏
-                let p_txt=$('<a>').text(url);   //创建新的a标签 并赋值
-                
-                checkImageURL(url, (isValid) => { if (isValid) { div.append(img) } else {div.append(p_txt)} });  //图片url有效就添加图片标签    无效就添加文本标签
+                let p_txt = $('<a>').text(url);   //创建新的a标签 并赋值          
+
+                checkImageURL(url, isValid => isValid ? div.append(img) : div.append(p_txt));   //  三元运算符  图片url有效就添加图片标签    无效就添加文本标签
             }
 
 
@@ -234,10 +259,12 @@
             };
             img.onerror = function () {
                 callback(false);
-                
+                return;
             };
             img.src = url;
         }
+
+
 
 
     </script>
