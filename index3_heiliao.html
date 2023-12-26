@@ -124,9 +124,9 @@
         <div id="dplayer"></div>
         <br />
         <br />
-        <button id="getText">刷新版权所有</button>
+        <button id="getText">刷新url.txt</button>
 
-        <div id="info">版权所有</div>
+        <div id="info"> </div>
         <div id="pics"> </div>
         <br />
 
@@ -175,17 +175,33 @@
 
         $('#getText').css('min-width', '150px').css('height', '50px').backgroud('chocolate');
 
-        //Ajax  异步读取url.txt
-        $('#getText').click(function () {
+        //Ajax  异步读取url.txt  并且生成a标签链接
+        $('#getText').click(() => {
             $.ajax({
                 url: 'url.txt',
                 method: 'GET',
-                dataType: 'text',
-                success: function (response) {
-                    $('#info').text(response);
-                }, error: function () {
-                    console.log('请求失败');
-                    alert('请求失败');
+                success: function (data) {
+                    // 将url.txt的内容按行分割成数组
+                    var urlArray = data.split('\n');
+
+                    // 创建a标签并添加到#info的div标签中
+                    for (var i = 0; i < urlArray.length; i++) {
+                        var url = urlArray[i].trim(); // 移除首尾空格
+                        if (url !== '') {
+                            // 创建a标签
+                            var linkElement = $('<a>').attr('href', url).attr('target','_blank').text(url);
+
+                            // 将a标签添加到#info的div标签中
+                            $('#info').append(linkElement);
+
+                            // 添加换行
+                            $('#info').append('<br>');
+                        }
+                    }
+                },
+                error: function () {
+                    // 处理加载失败的情况
+                    $('#info').text('加载链接失败');
                 }
             });
         });
