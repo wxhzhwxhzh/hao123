@@ -38,16 +38,18 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            display: flex;
         }
 
         /* 导航栏内部元素的样式设置，给子元素之间添加一些边距 */
-        #navbar>* {
-            margin: 1%;
+        a.nav {            
+            text-decoration: none;
+            padding: 10px;    
+            
         }
 
-        /* 设置页面中的标题文本颜色 */
-        h1 {
-            color: #244981;
+        a.nav:hover {
+            background-color: rgb(107, 106, 105);
         }
 
         /* 按钮样式设置 */
