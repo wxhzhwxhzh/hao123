@@ -12,70 +12,83 @@
 
     <!-- 装饰栏 开始 -->
     <style>
+        /* 设置整个页面的背景颜色 */
         body {
-
             background-color: #f3f3f5;
-            text-align: center;
-
+            margin: 0;
+            padding: 0;
+            /* 页面内容居中对齐 */
+            /* text-align: center; */
         }
 
+        /* 一个样式类，用于使元素居中定位 */
         .juzhong {
             position: absolute;
             left: 10%;
             right: 12%;
-            
+            text-align: center;
         }
 
+        /* 导航栏的样式设置 */
+        #navbar {
+            background-color: #7e7c7c;
+            padding: 10px;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
+        /* 导航栏内部元素的样式设置，给子元素之间添加一些边距 */
+        #navbar>* {
+            margin: 1%;
+        }
 
+        /* 设置页面中的标题文本颜色 */
         h1 {
             color: #244981;
         }
 
+        /* 按钮样式设置 */
         #randomButton {
+            /* 按钮的高度为50像素 */
             /* height: 50px; */
             background-color: rgba(223, 135, 20, 0.521);
             border-radius: 10px 0 0 10px;
             font-size: larger;
-            /* 设置按钮的高度为50像素 */
-
-
         }
 
+        /* 按钮悬停时的样式设置 */
         #randomButton:hover {
             background-color: rgb(219, 147, 14);
             /* 当鼠标悬停时，按钮的背景颜色变为红色 */
         }
 
-
-
-
+        /* 具有指定高度和背景颜色的元素 */
         .pp {
             height: 50px;
             background-color: chocolate;
-
         }
 
+        /* 固定在页面右边中心位置的元素 */
         #ice {
-            position: fixed;  
-            /* 固定位置在右边中心 */
+            position: fixed;
             bottom: 20%;
             right: 0%;
-
         }
+
+        /* 另一个固定在页面右边中心位置的元素，位置略微调整 */
         #ice2 {
-            position: fixed;  
-            /* 固定位置在右边中心 */
+            position: fixed;
             bottom: 8%;
             right: 0%;
-            
-
         }
-        #back-to-top{
+
+        /* 用于返回顶部按钮的样式设置 */
+        #back-to-top {
             font-size: x-large;
             border-radius: 40%;
-            
-           
         }
     </style>
 
@@ -94,27 +107,35 @@
 <body>
 
     <!-- 页面主体 start -->
+    <div id="navbar">
+        <a style="font-size: large;font-weight: bold;">视频站</a>
+        <a> 软件</a>
+        <a href="#"> 工具</a>
+        <a href="https://github.com/wxhzhwxhzh/hao123" target="_blank"> 关于</a>
+
+    </div>
+
     <div class="juzhong">
 
-        <h2 class="ui-widget-header">WangXianSheng<br>视频站</h2>
+        <h2 class="ui-widget-header"><br>WangXianSheng视频站</h2>
 
         <div id="ice">
             <button id="randomButton" onclick="updateRandomUrl()">点<br>我<br>刷<br>新</button>
         </div>
 
-        <div id="ice2"   onclick=" scrollToTop()">
-            
+        <div id="ice2" onclick=" scrollToTop()">
+
             <svg class="back-to-top-icon fixed-sidenav-storage-item-icon" data-v-a3c4b752=""
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"
                 width="30" height="30">
                 <path
                     d="M20.3964 12.83585C21.65635 14.0958 20.76405 16.2501 18.9822 16.2501L5.01774 16.2501C3.23594 16.2501 2.34359 14.0958 3.60353 12.83585L10.58575 5.85361C11.3668 5.07256 12.63315 5.07256 13.4142 5.85361L20.3964 12.83585z"
                     fill="currentColor"></path>
-        
-                    
+
+
             </svg>
         </div>
-        
+
         <br />
         <a id="raw_url" class="ui-widget-header  turn_to_red" href='https://www.bi1ibili.com/m3u8/3/3025/index.m3u8'
             target="_blank">访问原始网页</a>
@@ -141,12 +162,12 @@
     <script>
         // 回到顶部
         function scrollToTop() {
-            $('html, body').animate({scrollTop : 0}, 800);
+            $('html, body').animate({ scrollTop: 0 }, 800);
         }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             // 当页面滚动时显示或隐藏回到顶部按钮
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 if ($(this).scrollTop() > 100) {
                     $('#back-to-top').fadeIn();
                 } else {
@@ -189,7 +210,7 @@
                         var url = urlArray[i].trim(); // 移除首尾空格
                         if (url !== '') {
                             // 创建a标签
-                            var linkElement = $('<a>').attr('href', url).attr('target','_blank').text(url);
+                            var linkElement = $('<a>').attr('href', url).attr('target', '_blank').text(url);
 
                             // 将a标签添加到#info的div标签中
                             $('#info').append(linkElement);
