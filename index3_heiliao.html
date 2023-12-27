@@ -31,17 +31,20 @@
 
         /* 导航栏的样式设置 */
         #navbar {
-            background-color: #7e7c7c;
-            padding: 10px;
+            background-color: #7e7c7c;            
             color: #fff;
             position: fixed;
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
+            display: flex;           
+             z-index: 1000;
         }
 
         /* 导航栏内部元素的样式设置，给子元素之间添加一些边距 */
+        /* #navbar>* {
+            margin: 3%;
+            
+        } */
+
         a.nav {            
             text-decoration: none;
             padding: 10px;    
@@ -50,6 +53,11 @@
 
         a.nav:hover {
             background-color: rgb(107, 106, 105);
+        }
+
+        /* 设置页面中的标题文本颜色 */
+        h1 {
+            color: #244981;
         }
 
         /* 按钮样式设置 */
@@ -112,7 +120,7 @@
     <div id="navbar">
         <a class="nav" style="font-size: large;font-weight: bold;">视频站</a>
         <a class="nav"> 软件</a>
-        <a class="nav" href="#"> 工具--------</a>
+        <a class="nav" href="#"> 工具</a>
         <a class="nav" href="https://github.com/wxhzhwxhzh/hao123" target="_blank"> 关于</a>
 
     </div>
